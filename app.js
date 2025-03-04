@@ -8,7 +8,70 @@ const firebaseConfig = {
     appId: "YOUR_APP_ID"
 };
 
-// Initialize Firebase
+// DOM Elements - Reflection
+const reflectionScreen = document.getElementById('reflection-screen');
+const completedChallenge = document.getElementById('completed-challenge');
+const reflectionText = document.getElementById('reflection-text');
+const ratingButtons = document.querySelectorAll('.rating-btn');
+const personalGoalCompleted = document.getElementById('personal-goal-completed');
+const submitReflection = document.getElementById('submit-reflection');
+
+// Variables for reflection
+let currentChallenge = null;
+let selectedRating = null;
+
+// Set up rating buttons
+ratingButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        // Remove selected class from all buttons
+        ratingButtons.forEach(btn => btn.classList.remove('selected'));
+        
+        // Add selected class to clicked button
+        button.classList.add('selected');
+        
+        // Store selected rating
+        selectedRating = button.getAttribute('data-value');
+    });
+});
+
+// Submit reflection
+submitReflection.addEventListener('click', () => {
+    if (!reflectionText.value) {
+        alert('Please share your thoughts before submitting.');
+        return;
+    }
+    
+    if (!selectedRating) {
+        alert('Please rate the impact of this challenge.');
+        return;
+    }
+    
+    // In a real app, you would save this reflection to the database
+    alert(`Reflection submitted with rating: ${selectedRating}`);
+    
+    // Show main screen with a new challenge
+    setRandomChallenge();
+    showMainScreen();
+});
+
+// Update complete button to show reflection screen
+completeBtn.addEventListener('click', () => {
+    // Store current challenge
+    currentChallenge = challengeText.textContent;
+    
+    // Display the completed challenge on the reflection screen
+    completedChallenge.textContent = currentChallenge;
+    
+    // Reset reflection form
+    reflectionText.value = '';
+    ratingButtons.forEach(btn => btn.classList.remove('selected'));
+    personalGoalCompleted.checked = false;
+    selectedRating = null;
+    
+    // Show reflection screen
+    hideAllScreens();
+    reflectionScreen.classList.add('active');
+});// Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 
 // DOM Elements - Login/Register
@@ -193,6 +256,7 @@ function hideAllScreens() {
     registerScreen.classList.remove('active');
     assessmentScreen.classList.remove('active');
     mainScreen.classList.remove('active');
+    reflectionScreen.classList.remove('active');
 }
 
 function simulateLogin(email) {

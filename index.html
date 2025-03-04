@@ -49,7 +49,149 @@
                 <p>Already have an account? <a href="#" id="show-login">Sign In</a></p>
             </div>
         </div>
+   <div id="assessment-screen" class="screen">
+    <h1>Discover Your Purpose Path</h1>
+    <div class="card">
+        <div class="assessment-progress">
+            <div class="progress-bar">
+                <div class="progress" id="assessment-progress"></div>
+            </div>
+            <p><span id="current-question">1</span> of 4</p>
+        </div>
+        
+        <div class="question-container">
+            <div class="question" data-question="1">
+                <h3>Which statement resonates with you the most at this moment?</h3>
+                <div class="options">
+                    <label class="option">
+                        <input type="radio" name="q1" value="growth">
+                        <span>I need more meaningful growth and achievement in my life</span>
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q1" value="presence">
+                        <span>I'm not fully experiencing or appreciating my life as it happens</span>
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q1" value="clarity">
+                        <span>I struggle to communicate my thoughts and decisions with confidence</span>
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q1" value="connection">
+                        <span>My relationships feel surface-level and I crave deeper understanding</span>
+                    </label>
+                </div>
+            </div>
+            
+            <div class="question" data-question="2" style="display:none;">
+                <h3>When you think about a fulfilling day, which element feels the most important?</h3>
+                <div class="options">
+                    <label class="option">
+                        <input type="radio" name="q2" value="growth">
+                        <span>Making tangible progress on goals that stretch my capabilities</span>
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q2" value="presence">
+                        <span>Being completely immersed in each moment without distraction</span>
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q2" value="clarity">
+                        <span>Expressing myself with conviction and being understood exactly as intended</span>
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q2" value="connection">
+                        <span>Having conversations that go beyond small talk into real substance</span>
+                    </label>
+                </div>
+            </div>
+            
+            <div class="question" data-question="3" style="display:none;">
+                <h3>What would you most like to experience more often?</h3>
+                <div class="options">
+                    <label class="option">
+                        <input type="radio" name="q3" value="growth">
+                        <span>The satisfaction of pushing past my limits and seeing measurable growth</span>
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q3" value="presence">
+                        <span>Deep focus and awareness that makes even ordinary moments feel rich</span>
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q3" value="clarity">
+                        <span>The confidence that comes from knowing exactly what I want and communicating it effectively</span>
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q3" value="connection">
+                        <span>The sense of being truly seen and understood by others</span>
+                    </label>
+                </div>
+            </div>
+            
+            <div class="question" data-question="4" style="display:none;">
+                <h3>What most inspires you to get shit done?</h3>
+                <div class="options">
+                    <label class="option">
+                        <input type="radio" name="q4" value="growth">
+                        <span>Breaking through barriers and becoming a more capable version of myself</span>
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q4" value="presence">
+                        <span>Creating space for what truly matters by eliminating distractions</span>
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q4" value="clarity">
+                        <span>Projecting clarity and confidence that inspires trust in myself and others</span>
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q4" value="connection">
+                        <span>Building relationships with genuine depth that energize and sustain me</span>
+                    </label>
+                </div>
+            </div>
+        </div>
+        
+        <div class="assessment-navigation">
+            <button id="prev-btn" class="btn secondary-btn" disabled>Previous</button>
+            <button id="next-btn" class="btn primary-btn">Next</button>
+        </div>
     </div>
+</div>
+
+<div id="main-screen" class="screen">
+    <header>
+        <h1>Daily Purpose</h1>
+        <p class="welcome-text">Welcome, <span id="user-name">User</span>!</p>
+    </header>
+    
+    <div class="personal-goal-container">
+        <input type="text" id="personal-goal" placeholder="Set your personal goal for today">
+        <button id="save-goal" class="btn small-btn">Save</button>
+    </div>
+    
+    <div class="challenge-card">
+        <h2>Today's Challenge</h2>
+        <p id="challenge-text">Take 30 minutes to learn something new in your field today.</p>
+        <p id="affirmation-text" class="affirmation">By expanding your knowledge, you create new possibilities for growth.</p>
+        <button id="complete-btn" class="btn primary-btn">Mark as Complete</button>
+        <div id="voice-container" style="display:none;">
+            <p>You've unlocked a voice affirmation!</p>
+            <button id="play-affirmation" class="btn secondary-btn">Play Affirmation</button>
+        </div>
+    </div>
+    
+    <div class="stats-container">
+        <div class="stat-box">
+            <h3>Your Streak</h3>
+            <p id="streak-count" class="stat-value">0</p>
+            <p class="stat-label">days</p>
+        </div>
+        <div class="stat-box">
+            <h3>Team Streak</h3>
+            <p id="team-streak-count" class="stat-value">0</p>
+            <p class="stat-label">days</p>
+        </div>
+    </div>
+</div>
+</div>
 
     <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-auth-compat.js"></script>
